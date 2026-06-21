@@ -1,0 +1,85 @@
+Q1.
+Given an array of integers nums, find and return the largest and smallest elements inthe array.
+Example 1:
+Input:63 1 7 9 2 8 Output: 9 1 Explanation: The maximum element is 9, and the minimum element is 1.
+Example 2:
+Input: 5-5 10 0 -2 7Output: 10 -5Explanation: The maximum element is 10, and the minimum element is -5.
+Example 3:
+Input:14 Output: [4, 4] Explanation: Since there is only one element, both max and min are the same.
+
+CODE
+#include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+int n;
+cin>>n;
+vector <int> nums(n);
+for (int i=0; i<n; i++){
+cin>>nums[i];
+}
+int max= INT_MIN;
+int min= INT_MAX;
+
+for (int i=0; i<n;i++){
+if (nums[i]>max){
+max= nums[i];
+}
+if (nums[i]<min){
+min=nums[i];
+}
+}
+cout<<max<<" "<<min;
+return 0;
+}
+
+
+
+Q2.
+Given an array of integers nums , find and return the second largest element in the array without sorting
+. If there is no second largest element (i.e., all elements are thesame or there is only one element), return -1
+
+
+
+
+#include <iostream>
+#include <vector>
+#include <climits>
+using namespace std;
+
+int n;
+int findSecondLargest(vector<int> &nums,n){
+int max=INT_MIN;
+int smax= INT_MIN;
+for (int i=0; i<n;i++){
+if (nums[i]>max){
+smax = max;
+max= nums[i];
+}
+else if(nums[i]>smax && nums[i]<max){
+smax=nums[i];
+}
+}
+return (smax==INT_MIN)? -1 : smax;
+}
+int main(){
+int n;
+cin>>n;
+vector <int> nums(n);
+for (int i=0; i<n; i++){
+cin>>nums[i];
+}
+cout<< findSecondLargest(nums,n);
+return 0;
+
+}
+
+
+
+
+
+
+
+
+
+
