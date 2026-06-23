@@ -77,7 +77,49 @@ return 0;
 
 
 
+Given a non-negative integer array Arr of size N, where each element has a unique value — meaning no two elements can have the same value. You need to ensure that:
+Every element remains at least as large as its original value.You minimize the sum of all elements after making the necessary changes
 
+
+Example 1:
+Input: 2 2 4
+Output: 9
+Explanation:
+Two elements have the same value 2, so we increment one of them to 3. The finalarray becomes [2, 3, 4] , and the sum is: 2 + 3 + 4 = 9
+.
+Example 2:
+Input: 4 1 1 2 3 Output: 10
+Explanation: We increment the second 1 to 2 , then increment the existing 2 to 4. Final array:[1, 2,3, 4]. Sum: 1 + 2 + 3 + 4 = 10 .
+
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    int arr[100];
+
+    for (int i = 0; i < N; i++) {
+        cin >> arr[i];
+    }
+
+    sort(arr, arr + N);    //same like .begin() , .end(). we're sorting the array from start to end.
+    int sum = arr[0];
+
+    for (int i = 1; i < N; i++) {
+        if (arr[i] <= arr[i - 1]) {
+            arr[i] = arr[i - 1] + 1;
+        }
+
+        sum = sum + arr[i];
+    }
+
+    cout << sum;
+
+    return 0;
+}
 
 
 
